@@ -1,0 +1,78 @@
+
+  
+
+<div class="card bg-light text-dark"
+  style="width:600px;
+  margin-left:260px;">
+  <div class="card-body">
+    <h4 style="text-align: center;">Registration Form</h4>
+    <hr>
+  <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <div class="form-group">
+      <label for="firstName">FirstName</label>
+      <input type="text" [(ngModel)]="user.firstName" 
+        class="form-control"
+        id="firstName"
+        name="firstName"
+        placeholder="Enter your first name"
+        pattern="^[a-zA-Z]{2,}$"
+        required
+        #firstName="ngModel">
+        <span class="help-block" *ngIf="firstName.errors?.required && firstName.touched">
+          FirstName is required</span>
+        <span class="help-block" *ngIf="firstName.errors?.pattern && firstName.touched">
+          FirstName should have only alphabet with minimum 2 character</span>
+    </div>
+  
+    <div class="form-group">
+        <label for="lastName">LastName</label>
+        <input type="text" [(ngModel)]="user.lastName" 
+          class="form-control"
+          id="lastName"
+          name="lastName"
+          placeholder="Enter your last name"
+          pattern="^[a-zA-Z]{2,}$"
+          required
+          #lastName="ngModel">
+          <span class="help-block" *ngIf="lastName.errors?.required && lastName.touched">
+            LastName is required</span>
+          <span class="help-block" *ngIf="lastName.errors?.pattern && lastName.touched">
+            LastName should have only alphabet with minimum 2 character</span>
+      </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" [(ngModel)]="user.email" 
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter your email address"
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        required
+        #email="ngModel">
+        <span class="help-block" *ngIf="email.errors?.required && email.touched">
+          Email is required</span>
+        <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+          Email is not valid</span>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" [(ngModel)]="user.password" 
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          pattern="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?@]).*$"
+          required
+          #password="ngModel">
+          <span class="help-block" *ngIf="password.errors?.required && password.touched">
+            Password is required</span>
+          <span class="help-block" *ngIf="password.errors?.pattern && password.touched">
+            Password should have at least 8 character with lowercase and Uppercase alphabet,digit and special character Ex. Abc@123</span>
+    </div>
+
+    <button type="submit" [disabled]="!userForm.form.valid" 
+      class="btn btn-primary">Submit</button>
+  </form>
+
