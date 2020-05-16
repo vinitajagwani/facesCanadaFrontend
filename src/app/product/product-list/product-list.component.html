@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="myCss ">
+        <div class="row my1">
+            <div class="col-md-12 ">
+                <app-product-item *ngFor="let productElement of products; let indexof=index" [product]="productElement"
+                    [index]="indexof+1"></app-product-item>
+            </div>
+            <!-- (productSelected)="onProductSelected(productElement)" -->
+        </div>
+    </div>
+</div>

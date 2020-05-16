@@ -1,0 +1,11 @@
+<a style="cursor: pointer;" [routerLink]="[index]" routerLinkActive="active" class=" col-md-3 card my2  " >   <!-- list-group-item clearfix -->
+    
+    <img class="card-img-top" [src]="product.image" alt="{{product.name}}">
+    <div class="card-body">
+        <h4 class="card-title">{{product.id}}</h4>
+        <p class="card-text">{{product.name}}</p>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">{{product.price}}</p>
+        <!-- <button class="btn btn-primary" (click)="getDetail()"> Buy </button> -->
+    </div>
+</a>

@@ -1,0 +1,29 @@
+<p>user-list works!</p>
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">PASSWORD</th>
+            <th scope="col">NAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">ACTIVE</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td><button class="btn btn-danger" (click)="changeStatus(user.id, user.active)">{{ user.active }}</button></td>
+            <td><button class="btn btn-danger" (click)="deleteUser(user.id)"><i class="fa fa-trash"></i>  / <i class="fa fa-user-times"></i></button></td>
+            <td><button class="btn btn-success" (click)="updateUser(user.id)"><i class="fa fa-user-plus"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

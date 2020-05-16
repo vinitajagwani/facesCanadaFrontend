@@ -1,0 +1,27 @@
+/* .myCss{
+    
+    margin: 20px;
+    align-content: center;
+    padding: 10px;
+    text-align: center;
+    display: block;
+}
+
+.my1{
+    align-content: center;
+    margin: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+*/
+.my2 {
+    margin       : 20px;
+    align-content: center;
+    padding      : 10px;
+    text-align   : center;
+    display      : block;
+    font-size    : 16px;
+    line-height  : 23px;
+    font-weight  : 400;
+   
+}

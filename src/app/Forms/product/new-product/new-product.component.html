@@ -1,0 +1,116 @@
+
+
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+rel="stylesheet" id="bootstrap-css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"
+id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+<div class="main">
+
+<!-- Sign up form -->
+<section class="signup">
+    <div class="container col-md-12">
+        <div class="signup-content">
+            <div class="signup-form">
+                <form [formGroup]='productRegistration' class="register-form" id="register-form"
+                    (ngSubmit)="saveProduct(productRegistration)">
+                    <h2 class="form-title">Add new Product</h2>
+                    <div class="form-group">
+                        <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="number" name="id" id="id" formControlName="id"
+                            placeholder="Product id" />
+                            <span *ngIf="!productRegistration.get('id').valid && productRegistration.get('id').touched" class="help-block">
+                                please enter valid id
+                             </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="name" id="name" formControlName="name"
+                            placeholder="Product Name" />
+                            <span *ngIf="!productRegistration.get('name').valid && productRegistration.get('name').touched" class="help-block">
+                                please enter valid name
+                             </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="image"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="imge" id="image" formControlName="image"
+                            placeholder="Product Image URL" />
+                            <span *ngIf="!productRegistration.get('image').valid && productRegistration.get('image').touched" class="help-block">
+                                please enter valid image
+                             </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="text"><i class="zmdi zmdi-email"></i></label>
+                        <input type="text" name="detail" id="detail" formControlName="detail"
+                            placeholder="Prodyct Detail" />
+                            <span *ngIf="!productRegistration.get('detail').valid && productRegistration.get('detail').touched  " class="help-block">
+                                please enter valid detail
+                             </span>
+                             <!-- <span *ngIf="userregistrationForm.get('email').touched || userregistrationForm.get('email').dirty" class="help-block">
+                                please enter your email
+                             </span> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="prize"><i class="zmdi zmdi-phone"></i></label>
+                        <input type="number" name="prize" id="prize" formControlName="prize"
+                            placeholder="Product Prize" />
+                            <span *ngIf="!productRegistration.get('prize').valid && productRegistration.get('prize').touched" class="help-block">
+                                please enter valid prize
+                             </span>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="pancard"><i class="zmdi zmdi-card"></i></label>
+                        <input type="number" name="pancard" id="pancard" formControlName="panNumber"
+                            placeholder="Your PAN Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="adharcard"><i class="zmdi zmdi-card"></i></label>
+                        <input type="number" name="adharcard" id="adharcard" formControlName="adharNumber"
+                            placeholder="Your Adhar Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="bankAccountNumber"><i class="fa fa-bank"></i></label>
+                        <input type="number" name="bankAccountNumber" id="bankAccountNumber"
+                            formControlName="bankAccountNumber" placeholder="Your Bank Account Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="IFSCCode"><i class="fa fa-bank"></i></label>
+                        <input type="text" name="IFSCCode" id="IFSCCode" formControlName="ifscCode"
+                            placeholder="Your IFSC Code" />
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="password" name="pass" id="pass" formControlName="password"
+                            placeholder="Your password" />
+                    </div> -->
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
+                            statements in </label>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Register"  />
+                    </div>
+                </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="assets/images/background/signup-image.jpg" alt="sing up image"></figure>
+                <h2 ><a routerLink="/login" class="signup-image-link">Already have an account than Login!</a></h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</div>
+
+
+
+
+
+
+
