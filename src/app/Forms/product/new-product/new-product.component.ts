@@ -22,8 +22,8 @@ export class NewProductComponent implements OnInit {
       id: ['', Validators.required],
       name: ['', Validators.required],
       image: ['', Validators.required],
-      prize: ['', Validators.required],
-      detail: ['', Validators.required],
+      price: ['', Validators.required],
+      description: ['', Validators.required],
 
     })
     this.product = {

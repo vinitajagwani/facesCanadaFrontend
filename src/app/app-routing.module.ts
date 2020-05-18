@@ -34,13 +34,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
   { path: 'logout', component: LogoutComponent, },
   { path: 'userslist', component: UserListComponent },
-  {
-    path: 'userprofile', component: UserProfileComponent, children: [
-
-    ]
-  },
-  { path: 'editprofile/:id', component: EditProfileComponent, },
-
+  { path: 'profile', component: UserProfileComponent , children:[
+    { path: 'editProfile', component: EditProfileComponent }
   // {
   //   path: 'productlist', component: ProductListComponent,
   // },
@@ -48,7 +43,8 @@ const routes: Routes = [
   //   path: 'productdetail', component: ProductDetailComponent,
   // },
 
-
+  ]
+}
 ];
 
 @NgModule({

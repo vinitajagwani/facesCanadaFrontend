@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+
+<nav class="navbar navbar-expand navbar-dark bg-dark ">
 
   <div>
-      <a routerLink="" class="navbar-brand">Floor Decor</a>
+      <a routerLink="" class="navbar-brand">Faces Canada</a>
   </div>
 
   <ul class="navbar-nav ">
       <li routerLinkActive="active"><a routerLink="/home" class="nav-link">Home</a></li>
-      <li routerLinkActive="active"><a routerLink="" class="nav-link">About us</a></li>
-      <li routerLinkActive="active"><a routerLink="" class="nav-link">Contact Us</a></li>
+      
   </ul>
 
   <ul class="navbar-nav navbar-collapse justify-content-end">
@@ -28,39 +28,16 @@
 
   </ul>
 
-  <ul class="navbar-nav navbar-collapse justify-content-end">
-      <li class="nav-item dropdown  font1">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" ><i class="fa fa-dashboard " aria-hidden="true"></i>
-            Admin's Dashboard
-          </a>
-          <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item nav-link font1" routerLink="userlist"  >Total user</a></li>
-              <li><a class="dropdown-item nav-link font1" routerLink="userlist"  >Active User</a></li>
-              <li><a class="dropdown-item nav-link font1" routerLink="userlist/inactive">Inactive User</a></li>
-              <li><a class="dropdown-item nav-link font1" routerLink="">Total Orders</a></li>
-              <li><a class="dropdown-item nav-link font1"  routerLink="">Chart </a></li>
-          </ul>
-      </li>
-
-  </ul>
 
   <ul class="navbar-nav navbar-collapse justify-content-end">
-      <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" *ngIf="!isLoggedIn" >signup</a></li>
-      <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!isLoggedIn" >Login</a></li>
-	  <li routerLinkActive="active"><a routerLink="/userslist" class="nav-link">Users List</a></li>
-      <li class="nav-item dropdown  font1">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" ><i class="fa fa-user" aria-hidden="true" *ngIf="isLoggedIn"></i>
-              My Profile
-          </a>
-          <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item nav-link font1" routerLink="/userprofile">My Profile</a></li>
-              <li><a class="dropdown-item nav-link font1" routerLink="/adminprofile">Admin Profile  </a></li>
-              <li><a class="dropdown-item nav-link font1" routerLink="MyOrders">My Order</a></li>
+      <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" *ngIf="!isLoggedIn" ><span class="glyphicon glyphicon-user"></span>  Signup</a></li>
+      <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!isLoggedIn" ><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+	  <li routerLinkActive="active"><a routerLink="userslist" class="nav-link"*ngIf="isLoggedIn">Users List</a></li>
+     
+              <li><a class="dropdown-item nav-link font1" routerLink="/profile">My Profile</a></li>
               <li><a class="dropdown-item nav-link font1"  routerLink="logout">Logout</a></li>
-          </ul>
-      </li>
+          
+      
 
   </ul>
 </nav>

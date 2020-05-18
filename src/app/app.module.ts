@@ -43,8 +43,6 @@ import { AuthInterceptor } from './helper/auth.interceptor';
     LogoutComponent,
     NewProductComponent,
     ProductEditComponent
-    
-
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,7 @@ export class ProductserviceService {
 
   registrationOfProduct(product: Product) {
 
-    return this.http.post<Product>(`http://localhost:8088/api/product/save`, product);
+    return this.http.post<Product>(`http://localhost:8088/api/product/newProduct`, product);
   }
 
   updateProduct(id, product) {

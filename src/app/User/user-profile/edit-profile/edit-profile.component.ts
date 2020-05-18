@@ -1,39 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../model/user';
 import { UserService } from '../../../service/user-service.service';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { TokenStorageService } from 'src/app/service/token-storage.service';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-  id: number;
-  user:User;
+
   
-  constructor(private userService: UserService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+  form : any = { };
+  isSuccessful = false;
+  isLoggedIn =false;
+  isFailed = false;
+  currentUser : any ;
+  id : any;
+  constructor(private userService : UserService,
+                private tokenStorageService : TokenStorageService) { }
 
   ngOnInit(): void {
-
-    this.id = this.route.snapshot.params['id'];
-    this.user = new User();
-    this.userService.userDetailById(this.id).subscribe(
-      data => this.user = data
-    )
-
-  }
-  updateData() {
-    this.userService.updateUser(this.id, this.user).subscribe(
-      data => {
-        console.log(data)
-        // this.router.navigate(['dashboard'])
-      }
-    )
+    this.id = this.tokenStorageService.getUser().id;
+    this.currentUser = this.tokenStorageService.getUser();
   }
 
-  // updateData(updateForm){
-  // }
+  onEditProfile(){
+   
+    this.userService.updateProfile(this.id,this.form).subscribe(
+      response => {
+        console.log(response);
+        this.isSuccessful=true;
+        this.isFailed=false;
+      },
+      error => {
+        console.log(error);
+        this.isFailed=true;
+      });
+  }
+
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../model/user';
-import { UserService } from '../../service/user-service.service';
-import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,45 +9,22 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
-  id: number = null;
-  username: String;
-  email:string;
-  phonenumber:number;
+  currentUser : any ;
 
-  user: User;
-  constructor(private userService: UserService, private router: Router) {
-    this.username = userService.username;
-    console.log(this.username);
-  }
+  constructor(private tokenStorageService : TokenStorageService,
+                private router : Router ,
+                private route : ActivatedRoute){ }
 
   ngOnInit(): void {
-
-    this.getUserId();
-    
+    this.currentUser = this.tokenStorageService.getUser();
   }
 
-  getUserId() {
-    this.userService.getUserId().subscribe(
-      data => {
-        console.log(data);
-        this.refreshUser(data);
-      }
-    )
+  onEdit(){
+    this.router.navigate(['editProfile'],{relativeTo : this.route});
   }
 
-  updateUser(id) {
-    this.router.navigate(['editprofile', id])
-    // this.userHttpservice.updateUser(id,new User).subscribe();
+  onChangePassword(){
+    this.router.navigate(['changePassword'],{relativeTo : this.route});
   }
-  refreshUser(id) {
-    this.userService.userDetailById(id).subscribe(
-      response => {
-        this.user = response;
-        this.username = response.username;
-        this.id = response.id;
-        this.email = response.email;
-        console.log(this.user);
-      }
-    )
-  }
+
 }

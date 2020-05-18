@@ -24,7 +24,7 @@ export class UserService {
   }
 
   public findAllUser(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:8088/api/user/list');
+    return this.http.get<User[]>(USER_URL + 'list',headers);
   }
 
   public deleteUser(id) {
@@ -94,6 +94,13 @@ export class UserService {
 
   changeStatus(id,status){
     return this.http.get(`http://localhost:8088/api/user/updatestatus/${id}/${status}`)
+  }
+   updateProfile(id, data) {
+    return this.http.put(`http://localhost:8088/api/editProfile/${id}`, data);
+  }
+
+  changePassword(id, data) {
+    return this.http.put(`http://localhost:8088/api/user/changePassword/${id}`, data);
   }
 }
 
