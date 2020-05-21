@@ -7,14 +7,8 @@
       <h5>
        Email : {{ currentUser.email }}
       </h5>
-    <h5>Roles:</h5>
-    <ul>
-      <li *ngFor="let role of currentUser.roles">
-        {{ role }}
-      </li>
-    </ul>
-    <button class="btn btn-primary" (click)="onEdit()">Edit Profile</button><br/><br/>
-    <button class="btn btn-primary" (click)="onChangePassword()">Change Password</button>
+    <button class="btn btn-info" (click)="onEdit()">Edit Profile</button><br/><br/>
+	<button class="btn btn-info" (click)="onChangePassword()">Change Password</button><br/><br/>
     </div>
     <div class="col-sm-8">
       <router-outlet></router-outlet>

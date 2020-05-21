@@ -1,11 +1,54 @@
-<div class="container">
-    <div class="myCss ">
-        <div class="row my1">
-            <div class="col-md-12 ">
-                <app-product-item *ngFor="let productElement of products; let indexof=index" [product]="productElement"
-                    [index]="indexof+1"></app-product-item>
-            </div>
-            <!-- (productSelected)="onProductSelected(productElement)" -->
-        </div>
+<br>
+<br>
+<form class="container" [formGroup]="productlist" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="col-md-9" style="height: max-content;">
+        <select formControlName="list" class="form-control" aria-selected="true"  aria-placeholder="All">
+          <option>all</option>
+          <option>active</option>
+          <option>inactive</option>
+        </select>
+      </div>
     </div>
-</div>
+    <div class="col-md-3">
+      <div class="pull-left">
+
+        <button type="submit" class="btn btn-info">Products List</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <p *ngIf="!adminData.valid && adminData.touched && submitted ">Admin data is Invalid</p> -->
+</form>
+<br>
+<br>
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered ">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Productname</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+			<th scope="col">Description</th>
+            <th scope="col">IsActive</th>
+			<th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.image }}</td>
+            <td>{{ product.price }}</td>
+			<td>{{ product.description }}</td>
+		   <td><button class="btn btn-info" (click)="changeStatus(product.id, product.active)">{{ product.active }}</button></td>
+		   <td><button class="btn btn-info" [routerLink]="['editproduct',product.id]">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,76 +1,114 @@
+<br>
+<div class="container"><h1>Add product</h1>
+ <br>
+  <div class="card card-container">
+   
+	<form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name">Product Name</label>
+		<br>
+		<br>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="3"
+          maxlength="20"
+          #name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+          <div *ngIf="name.errors.required">Product Name is required</div>
+          <div *ngIf="name.errors.minlength">
+            Product Name must be at least 3 characters
+          </div>
+          <div *ngIf="name.errors.maxlength">
+            Product Name must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="image">Product Image</label>
+		<br>
+		<br>
+        <input
+          type="text"
+          class="form-control"
+          name="image"
+          [(ngModel)]="form.image"
+          required
+          #image="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && image.invalid">
+          <div *ngIf="image.errors.required">Image is required</div>
+          <div *ngIf="image.errors.email">
+            Image must be a valid
+          </div>
+        </div>
+      </div>
+	  <div class="form-group">
+        <label for="price">Product Price</label>
+		<br>
+		<br>
+        <input
+          type="text"
+          class="form-control"
+          name="price"
+          [(ngModel)]="form.price"
+          required
+          minlength="3"
+          maxlength="20"
+          #price="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && price.invalid">
+          <div *ngIf="price.errors.required">Product Price is required</div>
+          <div *ngIf="price.errors.minlength">
+            Product Price must be at least 3 characters
+          </div>
+          <div *ngIf="price.errors.maxlength">
+            Product Price must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Product Description</label>
+		<br>
+		<br>
+        <input
+          type="description"
+          class="form-control"
+          name="description"
+          [(ngModel)]="form.description"
+          required
+          minlength="6"
+          #description="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && description.invalid">
+          <div *ngIf="description.errors.required">description is required</div>
+          <div *ngIf="description.errors.minlength">
+            description must be at least 6 characters
+          </div>
+        </div>
+      </div>
+	  
+      <div class="form-group">
+        <button class="btn btn-primary">Add Product</button>
+      </div>
 
+      <div class="alert alert-warning" *ngIf="f.submitted && isFailed">
+        Add Product failed!<br />{{ errorMessage }}
+      </div>
+    </form>
 
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
-rel="stylesheet" id="bootstrap-css">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"
-id="bootstrap-css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-
-<div class="main">
-
-<!-- Sign up form -->
-<section class="signup">
-    <div class="container col-md-12">
-        <div class="signup-content">
-            <div class="signup-form">
-                <form [formGroup]='productRegistration' class="register-form" id="register-form"
-                    (ngSubmit)="saveProduct(productRegistration)">
-                    <h2 class="form-title">Add new Product</h2>
-                    
-                    <div class="form-group">
-                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="name" id="name" formControlName="name"
-                            placeholder="Product Name" />
-                            <span *ngIf="!productRegistration.get('name').valid && productRegistration.get('name').touched" class="help-block">
-                                please enter valid name
-                             </span>
-                    </div>
-                    <div class="form-group">
-                        <label for="image"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="imge" id="image" formControlName="image"
-                            placeholder="Product Image URL" />
-                            <span *ngIf="!productRegistration.get('image').valid && productRegistration.get('image').touched" class="help-block">
-                                please enter valid image
-                             </span>
-                    </div>
-                    <div class="form-group">
-                        <label for="text"><i class="zmdi zmdi-email"></i></label>
-                        <input type="text" name="description" id="description" formControlName="description"
-                            placeholder="Product description" />
-                            <span *ngIf="!productRegistration.get('description').valid && productRegistration.get('description').touched  " class="help-block">
-                                please enter valid description
-                             </span>
-                             <!-- <span *ngIf="userregistrationForm.get('email').touched || userregistrationForm.get('email').dirty" class="help-block">
-                                please enter your email
-                             </span> -->
-                    </div>
-                    <div class="form-group">
-                        <label for="price"><i class="zmdi zmdi-phone"></i></label>
-                        <input type="number" name="price" id="price" formControlName="price"
-                            placeholder="Product price" />
-                            <span *ngIf="!productRegistration.get('price').valid && productRegistration.get('price').touched" class="help-block">
-                                please enter valid price
-                             </span>
-                    </div>
-
-                    <div class="form-group form-button">
-                        <input type="submit" name="submit" id="submit" class="form-submit" value="Add"  />
-                    </div>
-                </form>
-            </div>
-                    </div>
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Product Added Succesfully!!
     </div>
-</section>
-
-
+  </div>
 </div>
-
-
-
-
-
-
-

@@ -1,0 +1,74 @@
+<form class="container" [formGroup]="orderlist" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-9" style="height: max-content;">
+                <select formControlName="list" class="form-control" aria-selected="true" aria-placeholder="All">
+                    <option>All order</option>
+                    <option>Approved order</option>
+                    <option>Rejected order</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="pull-left">
+
+                <button type="submit" class="btn btn-info">Order List</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <p *ngIf="!adminData.valid && adminData.touched && submitted ">Admin data is Invalid</p> -->
+</form>
+<br>
+<br>
+<br>
+<div id="page-content-wrapper">
+    <div class="page-content inset">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="w3-container">
+                    <div *ngFor="let user of orderDetail">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row sample-row">
+                                    <div class="col-xs-12 col-sm-6 col-md-3 gutter-margin-xs-sm gutter-margin-sm-md">
+                                        <div class="inner"><b>Order Id:</b> {{user.id}}</div>
+                                    </div>
+
+                                   
+
+                                </div>
+
+                            </div>
+                            <div class="row sample-row">
+                                <div class="col-xs-12 col-sm-6 col-md-6 gutter-margin-xs-sm gutter-margin-sm-md">
+                                    <div class="col-12">Name: <b>{{user.name}}</b></div>
+                                    <div class="col-12">Address: <b>{{user.address}}</b></div>
+                                   
+                                </div>
+								<br>
+								<br>
+								<br>
+                                <div class="col-xs-12 col-sm-6 col-md-6 gutter-margin-xs-sm gutter-margin-sm-md">
+                                    <div class="col-12" *ngIf="user.approvedOrder">Status :
+                                        <b>Approved</b></div>
+                                    <div class="col-12" *ngIf="user.rejectedOrder">Status :
+                                        <b>Rejected</b></div>
+                                    <div>
+                                        <button class="btn btn-info" (click)="changeStatus(user.id,0)"
+                                            >Approve </button>&nbsp;&nbsp;
+                                        <button class="btn btn-danger" (click)="changeStatus(user.id,1)"
+                                           > Reject</button>
+                                    </div>
+									<br>
+									<br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

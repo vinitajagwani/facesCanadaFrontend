@@ -6,38 +6,22 @@
   </div>
 
   <ul class="navbar-nav ">
-      <li routerLinkActive="active"><a routerLink="/home" class="nav-link">Home</a></li>
-      
-  </ul>
-
+  <li routerLinkActive="active" *ngIf="this.userService.isAdminLoggedIn() && this.userService.isUserLoggedIn()"><a routerLink="/adminhome" class="nav-link">Dashboard</a></li>
+   <li routerLinkActive="active" *ngIf="this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()"><a routerLink="/userhome" class="nav-link">Dashboard</a></li>
+            <li routerLinkActive="active" *ngIf="this.userService.isAdminLoggedIn()"><a routerLink="userslist"  class="nav-link">Users List</a></li>
+            <li routerLinkActive="active"><a routerLink="/productdetail"  *ngIf="this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()" class="nav-link">Product</a></li>
+			<li routerLinkActive="active"><a routerLink="product/productlist" *ngIf="this.userService.isUserLoggedIn() && this.userService.isAdminLoggedIn()" class="nav-link">Product</a></li>
+            <li routerLinkActive="active" ><a routerLink="orderlist"  *ngIf="this.userService.isUserLoggedIn() && this.userService.isAdminLoggedIn()" class="nav-link">Orders</a></li>
+        </ul>
   <ul class="navbar-nav navbar-collapse justify-content-end">
-      <!-- <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" >signup</a></li> -->
-      <!-- <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!this.userHttpService.isUserLoggedIn()">Login</a></li> -->
-      <li class="nav-item dropdown  font1">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" ><i class="fa fa-dashboard" aria-hidden="true"></i>
-             Dashboard
-          </a>
-          <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item nav-link font1" routerLink="">My Order List</a></li>
-              <li><a class="dropdown-item nav-link font1" routerLink="">Approved Order  </a></li>
-              <li><a class="dropdown-item nav-link font1" routerLink="">Rejected Order</a></li>
-              <li><a class="dropdown-item nav-link font1"  routerLink="">Logout</a></li>
-          </ul>
-      </li>
+            <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" *ngIf="!this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()">Signup</a></li>
+            <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()">Login</a></li>
+            
+                
+                    <li><a class="nav-link font1" routerLink="/profile" *ngIf="this.userService.isUserLoggedIn() || this.userService.isAdminLoggedIn()">My Profile</a></li>
+                    <li><a class="nav-link font1" routerLink="/myorder" *ngIf="this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()">My Order</a></li>
+                    <li><a class="nav-link font1" (click)="logout()"  routerLink="logout" *ngIf="this.userService.isUserLoggedIn() || this.userService.isAdminLoggedIn()">Logout</a></li>
+        
 
-  </ul>
-
-
-  <ul class="navbar-nav navbar-collapse justify-content-end">
-      <li routerLinkActive="active"><a routerLink="/signup" class="nav-link" *ngIf="!isLoggedIn" ><span class="glyphicon glyphicon-user"></span>  Signup</a></li>
-      <li routerLinkActive="active"><a routerLink="/login" class="nav-link" *ngIf="!isLoggedIn" ><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
-	  <li routerLinkActive="active"><a routerLink="userslist" class="nav-link"*ngIf="isLoggedIn">Users List</a></li>
-     
-              <li><a class="dropdown-item nav-link font1" routerLink="/profile">My Profile</a></li>
-              <li><a class="dropdown-item nav-link font1"  routerLink="logout">Logout</a></li>
-          
-      
-
-  </ul>
+        </ul>
 </nav>

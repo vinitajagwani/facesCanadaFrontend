@@ -17,7 +17,7 @@ export class SignupFormComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,12 +28,18 @@ export class SignupFormComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+		alert("You have succesfully registered!!!!")
+		this.goToLogin();
       },
       err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
+		alert("Registeration Failed!!!!")
       }
     );
+  }
+  goToLogin(){
+	  this.router.navigate(['/login']);
   }
 
 }

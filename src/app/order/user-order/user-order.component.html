@@ -1,0 +1,43 @@
+
+<div class="container">
+<h1 style="text:align:'center'">My Orders</h1>
+<br>
+    <div *ngFor="let user of userOrderDetail" >
+        <div class="card">
+            <div class="card-header">
+                <div class="row sample-row">
+                    
+					
+                    <div class="col-xs-12 col-sm-6 col-md-3 gutter-margin-xs-sm gutter-margin-sm-md">
+                        <div class="inner">Product Name: <i>{{user.productName}}</i></div>
+                    </div>
+
+                   
+
+                   
+                </div>
+
+            </div>
+            <div class="row sample-row">
+                <div class="col-xs-12 col-sm-6 col-md-6 gutter-margin-xs-sm gutter-margin-sm-md">
+                    <div class="col-12">Name: <i>{{user.name}}</i></div>
+                    <div class="col-12">Address: <i>{{user.address}}</i></div>
+                    
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 gutter-margin-xs-sm gutter-margin-sm-md">
+                    <div class="col-12" *ngIf="!user.isApproved">Status :
+                        <b>pending</b></div>
+                        <div class="col-12" *ngIf="user.isApproved">Status :
+                            <b>Approved</b></div>
+                  
+                    <button class="btn btn-info" [routerLink]="['updateOrder',user.id]">Edit order</button>&nbsp;&nbsp;
+					<button class="btn btn-danger" (click)="onDelete(user.id)">Delete order</button>
+					<br>
+					<br>
+					<br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

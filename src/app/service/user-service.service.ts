@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { TokenStorageService } from './token-storage.service';
 
 const AUTH_URL = 'http://localhost:8088/api/auth/';
 const USER_URL = 'http://localhost:8088/api/user/';
@@ -12,13 +13,16 @@ const headers = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  roles: String[];
+  adminLoggedIn = false;
   public username;
   constructor(private http: HttpClient,
-    private router: Router) {
+    private router: Router,private tokenService: TokenStorageService) {
      
       
   }
@@ -51,11 +55,19 @@ export class UserService {
     return !(user === null);
   }
 
+  isAdminLoggedIn() {
+    let admin = this.tokenService.getUser();
+    this.roles = admin.roles;
+    if (this.adminLoggedIn = this.roles.includes('ROLE_ADMIN')) {
+      return true;
+    } else {
+      return
+    }
+  }
   logout() {
     localStorage.removeItem('Username');
-    console.log("username successfully removed");
-    this.router.navigate(['/logout']);
-  }
+    console.log("user removed");
+      }
 
   login(credentials): Observable<any> {
     return this.http.post(AUTH_URL + 'signin', {
@@ -100,7 +112,7 @@ export class UserService {
   }
 
   changePassword(id, data) {
-    return this.http.put(`http://localhost:8088/api/user/changePassword/${id}`, data);
+    return this.http.put(`http://localhost:8088/api/changePassword/${id}`, data);
   }
 }
 

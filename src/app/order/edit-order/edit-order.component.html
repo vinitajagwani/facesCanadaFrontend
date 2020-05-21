@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="card-deck col-md-6" >
+
+        <!-- card for address -->
+        <div class="card colors">
+            <div class="card-body">
+                <div class="card-header col-md-12 pull-center">
+                    <i class=" fa fa-align-justify"></i> Order Details
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Name</span>
+                        </div>
+                        <input type="text" class="form-control"
+                           >
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Mobile No</span>
+                        </div>
+                        <input type="text" class="form-control" [pattern]="'[789][0-9]{9}'"
+                        >
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        </div>
+                       
+                    </div>
+                </div>
+                     <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Address</span>
+                        </div>
+                        <input type="text" class="form-control" 
+                            placeholder="House/Flate number , House Name" 
+                            >
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                    <div class="form-group col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Pincode</span>
+                            </div>
+                            <input type="text" class="form-control" [pattern]="'[3][0-9]{5}'"
+                                 placeholder="Pin Code">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-map-marker"
+                                        aria-hidden="true"></i></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success"  (click)="updateOrder(order.id,order)" > Edit Order</button>
+                
+                <!-- <button class="btn btn-success" *ngIf="order" (click)="updateOrder(order.id,order)" > update Order</button> -->
+
+            </div>
+        </div>
+</div>

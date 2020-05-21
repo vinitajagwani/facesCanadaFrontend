@@ -9,12 +9,14 @@ import { TokenStorageService } from "../service/token-storage.service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn = false;
+  user: User[];
   
   constructor(public userService: UserService , private tokenStorageService:TokenStorageService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
+   
   }
-
+logout(){
+    this.tokenStorageService.signOut();
+  }
 }

@@ -1,50 +1,29 @@
 
-<div class="cotainer-fluid bg">
-    <div class="row">
-        <!-- <div class="col-md-12 "> -->
-
-        <!-- <img [src] >
-
-        </div>
-        <div class="col-md-6">
-            
-            <label > <h3>{{product.name}}</h3></label>
-            <p > {{product.image}} </p>
-
-        </div>
-        <div class="col-md-12">
-            <button class="btn btn-primary"> buy </button>
-            <h5>{{product.prize}}</h5> -->
-
-        <div class="card col-md-12 ">
-            <div class="row my1">
-                <h1 class=" col-md-12 card-title">{{product.name}}</h1>
-                <br><br><br><br><br><br>
-                <img class="card-img-top col-md-6" [src]="product.image" alt="{{product.name}}">
-                <div class="card-body col-md-6 my2">
-
-                    <p class="card-text">{{product.id}}</p>
-                    <p class="card-text">{{product.image}}</p>
-                    <p class="card-text">{{product.price}}</p>
-                    <!-- <button class="btn btn-primary" (click)="getDetail()"> Buy </button> -->
-                </div>
-                <div class="col-md-12 myCss">
-                    <button class="btn btn-primary btn-tag "> buy at {{product.price}} </button>
-                    <!-- <h5>{{product.prize}}</h5> -->
-                </div>
-            </div>
-        </div>
-        <!-- </div> -->
+<br>
+<br>
+<br>
+<br>
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered ">
+        <thead>
+          <tr>
+            <th scope="col">Productname</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+			<th scope="col">Description</th>
+			<th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.name }}</td>
+            <td>{{ product.image }}</td>
+            <td>{{ product.price }}</td>
+			<td>{{ product.description }}</td>
+			<td><button class="btn btn-info" [routerLink]="['/placeorder',product.id]">Place Order</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-</div>
-<!-- 
-<div class="card">
-    <div class="backimmageac">
-        <div class="card-body">
-            <h6 class="card-title">AC Reparing</h6>
-            <br><br><br><br><br><br>
-            <button type="button" class="btn btn-primary">Select
-                your services</button>
-        </div>
-    </div>
-</div> -->
+  </div>

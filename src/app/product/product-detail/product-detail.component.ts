@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductserviceService } from '../../service/productservice.service';
-import { Product } from '../../model/product';
+import { ProductserviceService } from 'src/app/service/productservice.service';
+import { Product } from 'src/app/model/product';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ProductListFilter } from 'src/app/product/product-list/productList';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
@@ -9,29 +11,45 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product;
+  productlist: FormGroup;
+  uri: string;
+  activeProductList = false;
+  inActiveProductList = false;
+  list: any;
+  productListFilter: ProductListFilter;
+  products: Product[];
 
 
-  id: any;
-  constructor(private producthttpService: ProductserviceService, private route: ActivatedRoute, private router: Router) { }
+
+  constructor(private formbulder: FormBuilder, private router: Router, private productService: ProductserviceService, private route: ActivatedRoute) {
+    this.productlist = formbulder.group({
+      list: [null]
+    })
+    this.productListFilter = {
+      productlist: '',
+    }
+  }
 
   ngOnInit(): void {
-
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id = +params['id'];
-        this.getProductById(this.id);
-      }
-    );
+	
+    this.getActiveProductlist();
   }
 
-  getProductById(id: number) {
-    this.producthttpService.findProductById(id).subscribe(
-      response => {
-        this.product = response;
-        console.log(this.product);
-        // this.router.navigate[this.id];
-      }
-    )
+  
+
+  getActiveProductlist() {
+    this.productService.getActiveProduct().subscribe(data => {
+      this.products = data;
+      alert("Active Products only:   " + data.length);
+    });
   }
+  reloadPage() {
+    window.location.reload();
+  }
+	
+
+	placeOrder(id){
+		this.router.navigate(['placeOrder/$id',id])
+	}
+
 }

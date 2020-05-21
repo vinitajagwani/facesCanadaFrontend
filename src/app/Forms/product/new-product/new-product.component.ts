@@ -10,56 +10,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-product.component.css']
 })
 export class NewProductComponent implements OnInit {
-  productRegistration: FormGroup;
-  submitted: boolean = false;
-  product: Product;
 
-  constructor(private productService: ProductserviceService,
-    private formbuilder: FormBuilder,
-    private router: Router) {
+  form: any = {};
+  isSuccessful = false;
+  isFailed = false;
+  errorMessage = '';
 
-    this.productRegistration = formbuilder.group({
-      id: ['', Validators.required],
-      name: ['', Validators.required],
-      image: ['', Validators.required],
-      price: ['', Validators.required],
-      description: ['', Validators.required],
+  constructor(private productService: ProductserviceService) { }
 
-    })
-    this.product = {
-      id: null,
-      name: '',
-      image: '',
-      description: '',
-      price: null,
-    }
-
+  ngOnInit() {
   }
 
-  ngOnInit(): void {
+  onSubmit() {
+    this.productService.registerProduct(this.form).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isFailed = true;
+      }
+    );
   }
 
-  saveProduct(productRegistration) {
-
-    this.submitted = true
-
-    // if (this.productRegistration.valid) {
-    this.product.id = this.productRegistration.get('id').value;
-    this.product.name = this.productRegistration.get('name').value;
-    this.product.image = this.productRegistration.get('image').value;
-    this.product.price = this.productRegistration.get('price').value;
-    this.product.description = this.productRegistration.get('description').value;
-    this.productService.registrationOfProduct(this.product).subscribe(productRegistration => {
-      console.log('product added successfully!', productRegistration);
-      // this.gotoLoginPage();
-    }, error => {
-      console.log(error)
-      console.log(productRegistration);
-    })
-
-    // } else {
-    //   alert('product not saved');
-    // }
-
-  }
 }

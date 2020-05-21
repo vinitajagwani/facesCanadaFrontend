@@ -1,0 +1,74 @@
+<div class="container" [formGroup]="bookingForm">
+    <div class="card card-container">
+
+        <!-- card for address -->
+        <div class="card colors">
+            <div class="card-body">
+                <div class="card-header col-md-12 pull-center">
+                    Order Details
+                </div>
+                
+				<br>
+				<br>
+                <div class="form-group">
+                    <div class="input-group">
+                       
+                            <label>Name</label>
+                        
+                        <input type="text" class="form-control" formControlName="name" 
+                           >
+                        
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">UserName is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                       
+                            <label>Mobile No</label>
+                        
+                        <input type="text" class="form-control" formControlName='phoneNumber' [pattern]="'[789][0-9]{9}'"
+                        >
+                        
+                        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                            <div *ngIf="f.phoneNumber.errors.required">Valid Mobile Number is required</div>
+                        </div>
+                    </div>
+                </div>
+                     <div class="form-group">
+                    <div class="input-group">
+                        
+                            <label>Address</label>
+                        
+                        <input type="text" class="form-control" formControlName="address"
+                            placeholder="Full Address along with the city" 
+                            >
+                       
+                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                            <div *ngIf="f.address.errors.required">Full Address along with the city</div>
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="form-group">
+                        <div class="input-group">
+                           
+                                <label>Pincode</label>
+                            
+                            <input type="text" class="form-control" [pattern]="'[3][0-9]{5}'"
+                                formControlName="pincode" placeholder="Pin Code" 
+                                >
+                           
+                            <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+                                <div *ngIf="f.pincode.errors.required">Valid pincode is required</div>
+                            </div>
+                        </div>
+                    </div>
+					 <button class="btn btn-info" (click)="placeorder(bookingForm)" > Place Order</button>
+                </div>
+               
+                
+               
+            </div>
+        </div>

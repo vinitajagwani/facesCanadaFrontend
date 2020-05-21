@@ -20,6 +20,13 @@ import { LogoutComponent } from './forms/user/logout/logout.component';
 import { NewProductComponent } from './forms/product/new-product/new-product.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { AuthInterceptor } from './helper/auth.interceptor';
+import { AdminHomeComponent } from './home/admin-home/admin-home.component';
+import { UserHomeComponent } from './home/user-home/user-home.component';
+import { OrderListComponent } from './order/order-list/order-list.component';
+import { OrderNewComponent } from './order/order-new/order-new.component';
+import { UserOrderComponent } from './order/user-order/user-order.component';
+import { EditOrderComponent } from './order/edit-order/edit-order.component';
+import { ChangePasswordComponent } from './User/change-password/change-password.component';
 
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -42,7 +49,14 @@ import { AuthInterceptor } from './helper/auth.interceptor';
     EditProfileComponent,
     LogoutComponent,
     NewProductComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    AdminHomeComponent,
+    UserHomeComponent,
+    OrderListComponent,
+    OrderNewComponent,
+    UserOrderComponent,
+    EditOrderComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

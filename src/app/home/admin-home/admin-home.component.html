@@ -1,0 +1,40 @@
+<form class="container" [formGroup]="userlist" (ngSubmit)="onSubmit()">
+  <div class="row">
+  
+    <div class="col-md-6">
+      <div class="col-md-9" style="height: max-content;">
+        <select formControlName="list" class="form-control" aria-selected="true"  aria-placeholder="All">
+          <option>All</option>
+          <option>active</option>
+          <option>inactive</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="pull-left">
+		
+        <button type="submit" class="btn btn-info">Users</button>
+		
+      </div>
+    </div>
+	
+	<div>
+	<p>Count Of Users: {{users.length}}</p>
+	</div>
+ 
+  </div>
+
+</form>
+
+
+        <br>
+<br>
+<br>		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total number Of Orders: {{orderDetail.length}}
+            
+       
+
+
+<br>
+<br>
+<br>

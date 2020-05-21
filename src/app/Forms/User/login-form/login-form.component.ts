@@ -19,7 +19,8 @@ export class LoginFormComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private userService: UserService, private tokenStorage: TokenStorageService) { }
+  constructor(private userService: UserService, private tokenStorage: TokenStorageService,
+  private router: Router) { }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -33,15 +34,24 @@ export class LoginFormComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveRole(data.roles);
+        localStorage.setItem('Username', this.form.username);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+		if(this.roles.includes('ROLE_ADMIN')){
+			this.router.navigate(['/adminhome']);
+		}
+		else{
+		this.router.navigate(['/userhome']);
+		}
+        alert("Logged In!!!");
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+		alert("Login Failed!!");
       }
     );
   }

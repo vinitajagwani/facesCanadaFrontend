@@ -15,7 +15,7 @@ export class ProductEditComponent implements OnInit {
   submitted: boolean = false;
   product: Product;
   id: number;
-  productname;
+  name;
   editMode = false;
 
   constructor(private route: ActivatedRoute, private productHttpService: ProductserviceService, private formbuilder: FormBuilder,
@@ -24,23 +24,23 @@ export class ProductEditComponent implements OnInit {
     this.productRegistration = formbuilder.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
-      image: ['', [Validators.required, Validators.email]],
-      prize: ['', Validators.required],
-      detail: ['', Validators.required],
+      image: ['', Validators.required],
+      price: ['', Validators.required],
+      description: ['', Validators.required],
 
     })
-    this.product = {
+   this.product = {
       id: null,
       name: '',
       image: '',
       description: '',
       price: null,
+	  isActive: null
     }
   }
 
   ngOnInit(): void {
-
-    this.route.params.subscribe(
+ this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
 
@@ -60,10 +60,9 @@ export class ProductEditComponent implements OnInit {
     this.productHttpService.updateProduct(this.id, this.product).subscribe(
       data => {
         console.log(data)
-        // this.router.navigate(['dashboard'])
+        this.router.navigate(['../'],{relativeTo: this.route})
       }
     )
 
   }
-
 }

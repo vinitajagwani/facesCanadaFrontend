@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderServiceService } from 'src/app/service/order-service.service';
 import { User } from '../../model/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../service/user-service.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { UserListFilter } from './userList';
-
-
+import { UserListFilter } from 'src/app/User/user-list/userList';
+import { OrderListFilter } from 'src/app/order/order-list/OrderList';
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  selector: 'app-admin-home',
+  templateUrl: './admin-home.component.html',
+  styleUrls: ['./admin-home.component.css']
 })
-export class UserListComponent implements OnInit {
+export class AdminHomeComponent implements OnInit {
 
+  orderDetail;
+  orderlist: FormGroup;
+  
   userlist: FormGroup;
   uri: string;
   activeUserList = false;
@@ -23,24 +26,27 @@ export class UserListComponent implements OnInit {
 
 
 
-  constructor(private formbulder: FormBuilder, private router: Router, private httpService: UserService, private route: ActivatedRoute) {
+  constructor(private formbulder: FormBuilder, private router: Router, private orderDetailService: OrderServiceService, private httpService: UserService, private route: ActivatedRoute) {
     this.userlist = formbulder.group({
       list: [null]
     })
     this.userListFilter = {
       userlist: '',
     }
+	 
   }
+
 
   ngOnInit(): void {
 
     this.UserList();
+	this.totalOrder();
   }
 
   UserList() {
     this.httpService.findAllUser().subscribe(data => {
       this.users = data;
-      alert("All Users:  " + data.length);
+      
 
     });
   }
@@ -48,42 +54,21 @@ export class UserListComponent implements OnInit {
   getActiveUserlist() {
     this.httpService.getActiveUser().subscribe(data => {
       this.users = data;
-      alert("Active users only:   " + data.length);
+     
     });
   }
 
   getInactiveUserlist() {
     this.httpService.getInactiveUser().subscribe(data => {
       this.users = data;
-      alert("Inactive users only: " + data.length);
+      
 
     });;
   }
 
-  deleteUser(id) {
-    console.log(`user ${id} discarded`)
-    this.httpService.deleteUser(id).subscribe(data => {
-      console.log(data);
-      this.UserList();
-    });
-  }
+ 
 
-  updateUser(id) {
-    console.log(` user ${id} updated`);
-    this.router.navigate(['editprofile', id]);
-
-  }
-
-  changeStatus(id, status) {
-    if (status) {
-      this.httpService.changeStatus(id, 1).subscribe(data => console.log(data));
-    } else {
-      this.httpService.changeStatus(id, 0).subscribe(data => console.log(data));
-
-    }
-    this.UserList();
-
-  }
+  
 
   onSubmit() {
     if (this.userlist.get('list').value == "All") {
@@ -96,4 +81,16 @@ export class UserListComponent implements OnInit {
 
     }
 }
+	totalOrder() {
+
+    this.orderDetailService.getAllOrder().subscribe(
+      response =>  {console.log(response)
+	  this.orderDetail = response;
+	  });
+
+  }
+ 
+
+  
 }
+
