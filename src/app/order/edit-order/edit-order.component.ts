@@ -26,7 +26,7 @@ export class EditOrderComponent implements OnInit {
         this.id = +params['id'];
 
         this.order = new Order();
-        this.orderService.GetSingleOrderByID(this.id).subscribe(
+        this.orderService.getSingleOrderById(this.id).subscribe(
           data => this.order = data)
 		}
     );

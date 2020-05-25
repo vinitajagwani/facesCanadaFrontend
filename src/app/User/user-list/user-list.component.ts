@@ -60,13 +60,6 @@ export class UserListComponent implements OnInit {
     });;
   }
 
-  deleteUser(id) {
-    console.log(`user ${id} discarded`)
-    this.httpService.deleteUser(id).subscribe(data => {
-      console.log(data);
-      this.UserList();
-    });
-  }
 
   updateUser(id) {
     console.log(` user ${id} updated`);

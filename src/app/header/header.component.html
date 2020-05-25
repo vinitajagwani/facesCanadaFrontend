@@ -9,7 +9,7 @@
   <li routerLinkActive="active" *ngIf="this.userService.isAdminLoggedIn() && this.userService.isUserLoggedIn()"><a routerLink="/adminhome" class="nav-link">Dashboard</a></li>
    <li routerLinkActive="active" *ngIf="this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()"><a routerLink="/userhome" class="nav-link">Dashboard</a></li>
             <li routerLinkActive="active" *ngIf="this.userService.isAdminLoggedIn()"><a routerLink="userslist"  class="nav-link">Users List</a></li>
-            <li routerLinkActive="active"><a routerLink="/productdetail"  *ngIf="this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()" class="nav-link">Product</a></li>
+            <li routerLinkActive="active"><a routerLink="/productdetail"  *ngIf="this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()" class="nav-link">Place Order</a></li>
 			<li routerLinkActive="active"><a routerLink="product/productlist" *ngIf="this.userService.isUserLoggedIn() && this.userService.isAdminLoggedIn()" class="nav-link">Product</a></li>
             <li routerLinkActive="active" ><a routerLink="orderlist"  *ngIf="this.userService.isUserLoggedIn() && this.userService.isAdminLoggedIn()" class="nav-link">Orders</a></li>
         </ul>
@@ -19,7 +19,7 @@
             
                 
                     <li><a class="nav-link font1" routerLink="/profile" *ngIf="this.userService.isUserLoggedIn() || this.userService.isAdminLoggedIn()">My Profile</a></li>
-                    <li><a class="nav-link font1" routerLink="/myorder" *ngIf="this.userService.isUserLoggedIn() && !this.userService.isAdminLoggedIn()">My Order</a></li>
+                    <li><a class="nav-link font1" routerLink="/userorder" *ngIf="this.userService.isUserLoggedIn()">My Order</a></li>
                     <li><a class="nav-link font1" (click)="logout()"  routerLink="logout" *ngIf="this.userService.isUserLoggedIn() || this.userService.isAdminLoggedIn()">Logout</a></li>
         
 

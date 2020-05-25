@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ChartsModule } from 'ng2-charts';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
@@ -28,6 +29,7 @@ import { UserOrderComponent } from './order/user-order/user-order.component';
 import { EditOrderComponent } from './order/edit-order/edit-order.component';
 import { ChangePasswordComponent } from './User/change-password/change-password.component';
 
+import { OrdersPerUserComponent } from './orders-per-user/orders-per-user.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -56,14 +58,17 @@ import { ChangePasswordComponent } from './User/change-password/change-password.
     OrderNewComponent,
     UserOrderComponent,
     EditOrderComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    OrdersPerUserComponent
   ],
   imports: [
+	ChartsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+	
     
   ],
   providers: [AuthInterceptor],

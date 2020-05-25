@@ -16,7 +16,7 @@ export class OrderNewComponent implements OnInit {
   orderDetail: Order;
   id: number;
   product: Product;
-  bookingForm: FormGroup;
+  orderRegistration: FormGroup;
   submitted = false;
   errorMessage;
   order;
@@ -34,7 +34,7 @@ export class OrderNewComponent implements OnInit {
         console.log(this.id)
         
       });
-    this.bookingForm = this.formBuilder.group({
+    this.orderRegistration = this.formBuilder.group({
       name: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.pattern(/^(\d{10}|\w+([\.-]?\w+))$/)]],
       address: ['', Validators.required],
@@ -56,7 +56,7 @@ export class OrderNewComponent implements OnInit {
   }
 
   get f() {
-    return this.bookingForm.controls;
+    return this.orderRegistration.controls;
   }
 
 
@@ -65,15 +65,15 @@ export class OrderNewComponent implements OnInit {
     return id;
   }
 
-  placeorder(bookingForm) {
+  placeorder(orderRegistration) {
     this.submitted = true;
 
     this.orderDetail.productId = this.orderDetail.productId;
     this.orderDetail.userId = +window.sessionStorage.getItem('id');
-    this.orderDetail.name = this.bookingForm.get('name').value;
-    this.orderDetail.address = this.bookingForm.get('address').value;
-    this.orderDetail.pincode = this.bookingForm.get('pincode').value;
-    this.orderDetail.phoneNumber = this.bookingForm.get('phoneNumber').value;
+    this.orderDetail.name = this.orderRegistration.get('name').value;
+    this.orderDetail.address = this.orderRegistration.get('address').value;
+    this.orderDetail.pincode = this.orderRegistration.get('pincode').value;
+    this.orderDetail.phoneNumber = this.orderRegistration.get('phoneNumber').value;
     this.orderServices.placeOrder(this.orderDetail).subscribe(
       response => {console.log(response)
       this.router.navigate(['myorder'],{relativeTo: this.route});

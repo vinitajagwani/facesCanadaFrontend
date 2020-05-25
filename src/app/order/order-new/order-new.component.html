@@ -1,4 +1,4 @@
-<div class="container" [formGroup]="bookingForm">
+<div class="container" [formGroup]="orderRegistration">
     <div class="card card-container">
 
         <!-- card for address -->
@@ -26,13 +26,13 @@
                 <div class="form-group">
                     <div class="input-group">
                        
-                            <label>Mobile No</label>
+                            <label>Phone Number</label>
                         
                         <input type="text" class="form-control" formControlName='phoneNumber' [pattern]="'[789][0-9]{9}'"
                         >
                         
                         <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
-                            <div *ngIf="f.phoneNumber.errors.required">Valid Mobile Number is required</div>
+                            <div *ngIf="f.phoneNumber.errors.required">Valid Phone Number is required</div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-					 <button class="btn btn-info" (click)="placeorder(bookingForm)" > Place Order</button>
+					 <button class="btn btn-info" (click)="placeorder(orderRegistration)" > Place Order</button>
                 </div>
                
                 

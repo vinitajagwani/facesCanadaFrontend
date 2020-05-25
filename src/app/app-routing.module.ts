@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { Routes, RouterModule } from '@angular/router';
 import { SignupFormComponent } from './Forms/User/signup-form/signup-form.component';
 // import { SignupFormComponent } from "./signup/signup.component";
@@ -21,6 +22,7 @@ import { OrderNewComponent } from './order/order-new/order-new.component';
 import { UserOrderComponent } from './order/user-order/user-order.component';
 import { EditOrderComponent } from './order/edit-order/edit-order.component';
 import { ChangePasswordComponent } from './User/change-password/change-password.component';
+import { OrdersPerUserComponent } from './orders-per-user/orders-per-user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -53,13 +55,14 @@ const routes: Routes = [
   ]
 },
 { path: 'placeorder/:id', component: OrderNewComponent, },
-  { path: 'myorder/updateOrder/:id', component: EditOrderComponent, },
-	  {path: 'placeorder/:id/myorder', component: UserOrderComponent},
-  { path: 'myorder', component: UserOrderComponent },
+  { path: 'userorder/updateOrder/:id', component: EditOrderComponent, },
+	  {path: 'placeorder/:id/userorder', component: UserOrderComponent},
+  { path: 'userorder', component: UserOrderComponent },
   { path: 'orderlist', component: OrderListComponent },
    {
     path: 'productdetail/:id', component: ProductDetailComponent
   },
+  { path: 'ordersPerUserChart', component: OrdersPerUserComponent}
 ];
 
 @NgModule({

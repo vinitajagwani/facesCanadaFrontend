@@ -31,14 +31,7 @@ export class UserService {
     return this.http.get<User[]>(USER_URL + 'list',headers);
   }
 
-  public deleteUser(id) {
-    return this.http.delete(`http://localhost:8088/api/user/delete/${id}`)
-  }
 
-  public updateUser(id: any, user: User) {
-
-    return this.http.put<User>(`http://localhost:8088/api/user/update/${id}`, user);
-  }
 
   public userDetailById(id: any) {
     // const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('auth-token')}` });

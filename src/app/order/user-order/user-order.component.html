@@ -1,6 +1,6 @@
 
 <div class="container">
-<h1 style="text:align:'center'">My Orders</h1>
+<h1 style="text:align:'center'">My Orders List</h1>
 <br>
     <div *ngFor="let user of userOrderDetail" >
         <div class="card">
@@ -22,6 +22,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 gutter-margin-xs-sm gutter-margin-sm-md">
                     <div class="col-12">Name: <i>{{user.name}}</i></div>
                     <div class="col-12">Address: <i>{{user.address}}</i></div>
+					<div class="col-12">Pincode: <i>{{user.pincode}}</i></div>
                     
                 </div>
 

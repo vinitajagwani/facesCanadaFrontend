@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/model/User';
 import { Order } from 'src/app//model/Order';
 import { Observable } from 'rxjs';
+import { OrdersPerUser } from 'src/app/model/orders-per-user'
 const ORDER_API = "http://localhost:8088/api/order/"
 @Injectable({
   providedIn: 'root'
@@ -16,20 +17,24 @@ export class OrderServiceService {
     return this.http.post<Order>(ORDER_API + "placeOrder", order);
   }
 
-  public MyOrderDetailById(id: any) {
-    return this.http.get<Order>(`${ORDER_API}` + 'myorder/' + `${id}`);
+  public myOrderDetailById(id: any) {
+    return this.http.get<Order>(ORDER_API + 'myorder/' + `${id}`);
   }
+  
+   public ordersPerUser(): Observable<Array<OrdersPerUser>>{
+	 return this.http.get<Array<OrdersPerUser>>(ORDER_API + 'ordersPerUser');
+ }
 
   public getAllOrder() {
-    return this.http.get<Order>(`${ORDER_API}` + 'list');
+    return this.http.get<Order>(ORDER_API + 'list');
   }
 
   public getApprovedOrder() {
-    return this.http.get<Order>(`${ORDER_API}` + 'approved/list');
+    return this.http.get<Order>(ORDER_API + 'approved/list');
   }
 
   public getRejectedOrder() {
-    return this.http.get<Order>(`${ORDER_API}` + 'rejected/list');
+    return this.http.get<Order>(ORDER_API + 'rejected/list');
   }
 
   public updateOrder(id: any, order: Order) {
@@ -37,7 +42,7 @@ export class OrderServiceService {
     return this.http.put<Order>(`http://localhost:8088/api/order/update/${id}`, order);
   }
 
-  GetSingleOrderByID(id) {
+  public getSingleOrderById(id) {
     return this.http.get<Order>(`http://localhost:8088/api/order/${id}`)
   }
 

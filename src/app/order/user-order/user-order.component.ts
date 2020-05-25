@@ -31,7 +31,7 @@ export class UserOrderComponent implements OnInit {
   }
 
   refreshUser(id) {
-    this.orderDetailService.MyOrderDetailById(id).subscribe(
+    this.orderDetailService.myOrderDetailById(id).subscribe(
       response => {
         this.userOrderDetail = response;
         console.log(this.userOrderDetail);

@@ -62,12 +62,12 @@ export class UserHomeComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.orderlist.get('list').value == "All order") {
+    if (this.orderlist.get('list').value == "Orders") {
       this.totalOrder();
-    } else if (this.orderlist.get('list').value == "Approved order") {
+    } else if (this.orderlist.get('list').value == "Approved order Count") {
       this.approvedOrder();
 
-    } else if (this.orderlist.get('list').value == "Rejected order") {
+    } else if (this.orderlist.get('list').value == "Rejected order Count") {
       this.rejectedOrder();
     }
 
